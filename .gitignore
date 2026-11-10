@@ -1,0 +1,12 @@
+# Student data and local settings must never enter this repository
+*.xlsx
+*.xls
+*.csv
+~$*
+tools/publish.local.json
+
+node_modules/
+.demo/
+.superpowers/
+.claude/
+docs/.data-staging/

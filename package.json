@@ -1,0 +1,13 @@
+{
+  "name": "bgc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BGC: Benedict's Grade Consultation",
+  "type": "module",
+  "scripts": {
+    "publish": "node tools/publish.mjs",
+    "demo": "node tools/publish.mjs --demo && node tools/serve.mjs .demo",
+    "test": "node --test test/bgc.test.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

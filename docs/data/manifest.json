@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "salt": "WUVzU3Xd6bSZ4yN8c/PAMw==",
+  "kdf": {
+    "name": "argon2id",
+    "memoryKiB": 131072,
+    "passes": 5
+  },
+  "course": "AAP 101 Art Appreciation",
+  "term": "1st Semester, AY 2026-2027",
+  "updatedAt": "2026-11-10T01:57:59.711Z"
+}

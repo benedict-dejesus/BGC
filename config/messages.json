@@ -1,0 +1,71 @@
+{
+  "headings": {
+    "overall": "Overall",
+    "missing": "Missing scores",
+    "strength": "Your strongest area",
+    "focus": "Your area to focus on",
+    "trend": "Midterm to Finals",
+    "pending": "Your record isn't ready yet",
+    "completion": "How to complete your INC",
+    "receiving": "Keep a receiving copy"
+  },
+  "pending": "Sorry, {name}, I'm still grading your {components}, so your record isn't complete yet. Please check back soon. Your scores and grade will appear here once grading is done.",
+  "overall": [
+    {
+      "from": 1,
+      "to": 1.5,
+      "text": "Excellent work, {name}. Your record shows consistently outstanding performance this semester."
+    },
+    {
+      "from": 1.75,
+      "to": 2.25,
+      "text": "Well done, {name}. You passed with a strong record this semester."
+    },
+    {
+      "from": 2.5,
+      "to": 3,
+      "text": "You passed this course, {name}. Your record meets the requirements."
+    },
+    {
+      "from": 3.01,
+      "to": 5,
+      "text": "{name}, your current record is below the passing mark. Please review your scores and message me if you have questions."
+    }
+  ],
+  "remarks": {
+    "Incomplete": "{name}, you will receive INC (Incomplete) in the university portal because one or more requirements have no recorded score. You can still replace it with a final grade next semester by following the steps below.",
+    "Dropped": "{name}, your record is marked Dropped. Please message me if you think this is a mistake."
+  },
+  "missing": {
+    "one": "No score is recorded for {components}.",
+    "many": "No scores are recorded for {components}."
+  },
+  "strength": {
+    "one": "Your highest score was in {components}, at {percent}% of the total points.",
+    "many": "Your highest scores were in {components}, at {percent}% of the total points."
+  },
+  "focus": {
+    "one": "Your lowest score was in {components}, at {percent}% of the total points.",
+    "many": "Your lowest scores were in {components}, at {percent}% of the total points."
+  },
+  "trend": {
+    "steadyWithin": 3,
+    "up": "Your grade rose by {points} points from Midterm to Finals.",
+    "down": "Your grade fell by {points} points from Midterm to Finals.",
+    "steady": "Your grade stayed steady from Midterm to Finals."
+  },
+  "leaveOutOfComparison": [
+    "Attendance"
+  ],
+  "completion": {
+    "steps": [
+      "During the first week of next semester, get the latest completion form online, from your dean's office, or from the Registrar's Office.",
+      "Fill out the form and prepare your missing requirement.",
+      "Look for Sir Kito. Sending a private message the day before makes this go more smoothly.",
+      "I will check and score your missing requirement, compute your new final grade, write it on your completion form, and sign it.",
+      "Submit the completion form to your dean's office for signing. They will either ask you to bring the form, signed by me and your dean, to the Registrar's Office, or submit it there themselves.",
+      "Wait for your INC to change to your new final grade."
+    ],
+    "receiving": "Whenever you leave a signed form with any office, keep a photocopy and have the receiving office sign it as received. This is your proof if the office loses your document."
+  }
+}

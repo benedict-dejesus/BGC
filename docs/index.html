@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FFF7F7">
+  <title>BGC: Benedict's Grade Consultation</title>
+  <meta name="description" content="View your class record for grade consultation.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/theme.js"></script>
+  <script src="assets/vendor/argon2.umd.min.js"></script>
+  <script src="assets/app.js" type="module"></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19zM14 7l3 3"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 9h12v6a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M9 3v3M13 3v3"/></symbol>
+    <symbol id="i-mask" viewBox="0 0 24 24"><path d="M5 5c4 1.5 10 1.5 14 0v7a7 7 0 0 1-14 0zM9 10h.01M15 10h.01M9 14.5c1.7 1.5 4.3 1.5 6 0"/></symbol>
+    <symbol id="i-guitar" viewBox="0 0 24 24"><circle cx="9" cy="15" r="5"/><circle cx="9" cy="15" r="1.5"/><path d="M12.5 11.5L20 4M18 2.5l3.5 3.5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h4l1.5-2.5h5L16 8h4v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-quiz" viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+    <symbol id="i-exam" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h7"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M5 5h14v15H5zM5 10h14M9 3v4M15 3v4M9.5 15l2 2 3.5-4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6zM9 12l2 2 4-4"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-4 4v-4H4z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14A8 8 0 1 1 10 4a6.5 6.5 0 0 0 10 10z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-3 5 3-1.5-7.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M4 17l6-6 4 4 6-7M15 8h5v5"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4L2.5 20h19zM12 10v4M12 17h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand">
+        <svg class="brand-mark" viewBox="0 0 32 32" width="36" height="36" aria-hidden="true"><path class="mark-body" d="M3 7h26v6a3 3 0 0 0 0 6v6H3v-6a3 3 0 0 0 0-6z"/><path class="mark-tear" d="M21 8v16"/><path class="mark-lines" d="M8 12h9v2H8zm0 6h6v2H8z"/></svg>
+        <span class="wordmark">BGC</span>
+        <span class="brand-name">Benedict's Grade Consultation</span>
+      </span>
+      <div class="topbar-actions">
+        <button class="pill-button" id="topbar-close" type="button" data-close hidden>
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+          <span>Close my record</span>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-labelledby="theme-label">
+          <span class="theme-track" aria-hidden="true">
+            <svg class="icon"><use href="#i-sun"/></svg>
+            <svg class="icon"><use href="#i-moon"/></svg>
+            <span class="theme-knob"></span>
+          </span>
+          <span class="theme-label" id="theme-label">Dark mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="entry" class="shell entry">
+    <section class="hero entry-hero">
+      <svg class="hero-art" viewBox="0 0 640 560" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+        <circle class="art-plane" cx="470" cy="330" r="300"/>
+        <circle class="art-ring" cx="470" cy="330" r="350"/>
+        <circle class="art-ring" cx="470" cy="330" r="400"/>
+        <path class="art-mint" d="M640 0v130A130 130 0 0 1 510 0z"/>
+      </svg>
+
+      <div class="hero-copy">
+        <p class="chip" id="course-chip" hidden></p>
+        <h1>Benedict's Grade Consultation</h1>
+        <p class="lede" id="course-line">Enter your student number to view your scores and what they mean.</p>
+      </div>
+
+      <form class="ticket" id="lookup" novalidate>
+        <div class="ticket-main">
+          <label for="student-number">Student number</label>
+          <input id="student-number" name="bgc-lookup" type="text" inputmode="numeric" pattern="[0-9]*" enterkeyhint="go" autocomplete="off"
+                 autocapitalize="off" spellcheck="false" placeholder="10 digits" aria-describedby="digit-count form-message">
+          <div class="digit-meter">
+            <span class="pips" id="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <p class="digit-count" id="digit-count">0 of 10 digits</p>
+          </div>
+          <p class="form-message" id="form-message" role="alert"></p>
+          <button class="primary" id="submit" type="submit">
+            <span class="spinner" aria-hidden="true"></span>
+            <span id="submit-label">View my record</span>
+          </button>
+        </div>
+        <div class="ticket-stub" id="entry-stub" aria-hidden="true"><span>Admit one</span></div>
+      </form>
+
+      <ul class="mediums" aria-label="Activities in this course">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg>Sketch</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-cup"/></svg>Coffee painting</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-mask"/></svg>Theater</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-guitar"/></svg>Guitar</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Photography</li>
+      </ul>
+    </section>
+
+    <section class="tile steps" aria-labelledby="steps-title">
+      <h2 id="steps-title">How it works</h2>
+      <ol>
+        <li><strong>Enter your student number</strong><span>No account or password needed.</span></li>
+        <li><strong>Review your scores</strong><span>See every Midterm and Finals score.</span></li>
+        <li><strong>Read what they mean</strong><span>Find your strongest area and what to focus on.</span></li>
+      </ol>
+    </section>
+
+    <section class="tile privacy" aria-labelledby="privacy-title">
+      <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+      <h2 id="privacy-title">Privacy notice</h2>
+      <p>This web app is only for grade consultation purposes. Use it to view your own record and to ask about your scores. The grades shown here are the ones you will receive in the university portal.</p>
+      <p>Your student number opens your record, so keep it private. BGC doesn't save your number on this device.</p>
+    </section>
+
+    <section class="tile tile-mint ask" aria-labelledby="ask-title">
+      <span class="badge badge-solid"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+      <h2 id="ask-title">Have a question?</h2>
+      <p>Message Benedict if your record doesn't open or a score looks wrong.</p>
+      <a class="primary" href="https://www.facebook.com/benedict.de.jesus.2025" target="_blank" rel="noopener noreferrer">Message Benedict on Facebook</a>
+    </section>
+  </main>
+
+  <main id="record" class="shell record" hidden>
+    <section class="hero record-hero">
+      <svg class="hero-art" viewBox="0 0 640 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+        <circle class="art-plane" cx="560" cy="200" r="280"/>
+        <circle class="art-ring" cx="560" cy="200" r="330"/>
+      </svg>
+      <div class="hero-copy">
+        <p class="chip" id="section-chip"></p>
+        <h1 id="greeting" tabindex="-1"></h1>
+        <p class="lede" id="identity"></p>
+      </div>
+      <div class="result" id="result">
+        <div class="gauge">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="gauge-track" cx="60" cy="60" r="52" pathLength="100"/>
+            <circle class="gauge-arc" id="gauge-arc" cx="60" cy="60" r="52" pathLength="100" stroke-dasharray="0 100"/>
+          </svg>
+          <p class="gauge-text"><strong id="gauge-value"></strong><span id="gauge-label"></span></p>
+        </div>
+        <div class="ticket result-ticket">
+          <div class="ticket-main" id="result-main"></div>
+          <div class="ticket-stub" aria-hidden="true"><span>Admit one</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" id="stats" aria-label="Summary"></section>
+
+    <section class="scores" id="scores" aria-labelledby="scores-title">
+      <h2 class="visually-hidden" id="scores-title">Your scores</h2>
+      <div class="terms" id="terms"></div>
+    </section>
+
+    <section class="tile reading" aria-labelledby="reading-title">
+      <h2 id="reading-title">What your record shows</h2>
+      <div class="reading-list" id="interpretation"></div>
+    </section>
+
+    <section class="hero closing" aria-labelledby="questions-title">
+      <div>
+        <h2 id="questions-title">Have a question about your record?</h2>
+        <p id="updated"></p>
+      </div>
+      <div class="closing-actions">
+        <a class="primary primary-mint" href="https://www.facebook.com/benedict.de.jesus.2025" target="_blank" rel="noopener noreferrer">Message Benedict on Facebook</a>
+        <button class="secondary" type="button" data-close>Close my record</button>
+      </div>
+    </section>
+  </main>
+
+  <noscript><p class="noscript">BGC needs JavaScript to open your record. Turn it on and reload this page.</p></noscript>
+</body>
+</html>
